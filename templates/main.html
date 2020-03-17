@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Encrypt</title>
+
+    </head>
+
+    <body data-aos-easing="ease" data-aos-duration="500" data-aos-delay="0">
+
+        
+        <h4 class="form_heading font-Forum">Encrypt text</h4>
+
+        <div class="representation_form">
+            
+            
+    
+            <textarea name="input_header" id="input_header" placeholder="Header"></textarea>
+            <textarea name="input_data" id="input_data" placeholder="Data" required="required"></textarea>
+            
+            <div class="submit_button">
+                <button value="Submit Details" onclick="encryptRawData()">
+                    Encrypt!
+                </button>
+            </div>
+                        
+        </div>
+
+        <br>
+
+        <h4 class="form_heading font-Forum">Midway Text</h4>
+
+        <div class="outside">
+
+            
+            Key: <textarea name="q_key" id="q_key" placeholder="Key*"></textarea>
+            <!-- <button onclick="copyText()">Copy text</button> -->
+            <br>
+            <br>
+
+            <textarea name="nonce" id="nonce" placeholder="Nonce"></textarea>
+
+            <textarea name="header" id="header" placeholder="Header"></textarea>
+            
+            Enigma: <textarea name="ciphertext" id="ciphertext" placeholder="Cipher Text"></textarea>
+            
+            <textarea name="tag" id="tag" placeholder="Tag"></textarea>
+            
+            
+            
+            
+    
+        </div>
+
+        <br>
+
+        
+        <h4 class="form_heading font-Forum">Turn back the Data!</h4>
+        <div clasS="turn_back">
+
+            <textarea name="q_mid_key" id="q_mid_key" placeholder="Key*"></textarea>
+            <button onclick="moveTheKey()">Put the Key</button>
+
+            <textarea name="output_data" id="output_data" placeholder="Data"></textarea>
+
+            <div class="submit_button">
+                <button value="Submit Details" onclick="decryptRawData()">
+                    Reverse!
+                </button>
+            </div>
+        </div>
+
+    </body>
+    <script>
+    
+        function encryptRawData(){
+            let request = new XMLHttpRequest();
+            let goTo = "http://127.0.0.1:8003/encryption";
+
+            let header = document.getElementById("input_header").value
+            let data = document.getElementById("input_data").value
+            let rslt = document.getElementById("result")
+
+            goTo += "?data=" + data + "&header=" + header;
+
+            request.open("POST", goTo, true);
+            request.send();
+            request.onload = function(){
+                let data = JSON.parse(this.response);
+                // TODO: Add a for in range
+                // console.log(data)
+
+                document.getElementById("nonce").value = data.result.nonce;
+                document.getElementById("header").value = data.result.header;
+                document.getElementById("ciphertext").value = data.result.ciphertext;
+                document.getElementById("tag").value = data.result.tag;
+                document.getElementById("q_key").value = data.result.q_key;
+            };
+       }
+
+       function decryptRawData(){
+        let request = new XMLHttpRequest();
+            let goTo = "http://127.0.0.1:8003/decryption";
+
+            let nonce = document.getElementById("nonce").value
+            let header = document.getElementById("header").value
+            let ciphertext = document.getElementById("ciphertext").value
+            let tag = document.getElementById("tag").value
+            let q_key = document.getElementById("q_key").value
+
+            goTo += "?nonce=" + nonce + "&header=" + header + "&ciphertext=" + ciphertext + "&tag=" + tag + "&q_key=" + q_key;
+
+            request.open("POST", goTo, true);
+            request.send();
+
+            request.onload = function(){
+                let data = JSON.parse(this.response);
+                // TODO: Add a for in range
+                // console.log(data)
+
+                document.getElementById("output_data").value = data.result;
+            }
+
+       }
+
+       function copyText(){
+            let copyText = document.getElementById("q_key");
+
+            /* Select the text field */
+            copyText.select();
+            // copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+        }
+
+        function moveTheKey(){
+            let q_key = document.getElementById("q_key");
+            let q_mid = document.getElementById("q_mid_key");
+            
+            q_mid.value = q_key.value;
+        }
+
+    </script>
+</html>
