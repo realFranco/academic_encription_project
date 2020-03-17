@@ -7,7 +7,7 @@ views/encription.py
 Ref: 
 > https://pycryptodome.readthedocs.io/en/latest/src/cipher/modern.html
 > https://en.wikipedia.org/wiki/Authenticated_encryption
-> https://en.wikipedia.org/wiki/EAX_mode
+> https://en.wikipedia.org/wiki/EAX_mode 
 """
 
 
