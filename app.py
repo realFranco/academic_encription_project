@@ -20,8 +20,6 @@ from views.encryption import encryption
 
 
 app = Flask(__name__)
-# app.config['SECRET_KEY'] \
-#     = "f95b6589a033d93ac16e665ac4b7c112e55db60920146ac8776e36e0527743c6"
 
 # Grant access on CORS
 CORS(app)

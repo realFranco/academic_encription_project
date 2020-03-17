@@ -7,7 +7,7 @@ views/encription.py
 Ref: 
 > https://pycryptodome.readthedocs.io/en/latest/src/cipher/modern.html
 > https://en.wikipedia.org/wiki/Authenticated_encryption
-> https://en.wikipedia.org/wiki/EAX_mode 
+> https://en.wikipedia.org/wiki/EAX_mode
 """
 
 
@@ -33,7 +33,6 @@ def encrypt():
     data = str.encode(request.args['data'])
     
     key = get_random_bytes(16)
-    print('Start Key: ', key); print('\n\n\n')
 
     cipher = AES.new(key, AES.MODE_EAX) 
     cipher.update(header) 
@@ -45,8 +44,6 @@ def encrypt():
 
     # Encode the key into unidocde to pass it through flask's request.
     q_key = str(key).encode('utf-8')[2:-1]
-    # q_key = q_key.replace(' ', '+')
-    print('q_key: {}', type(q_key))
 
     result['q_key'] = q_key
 
@@ -62,7 +59,6 @@ def app_decryption():
 
     # Decocode the key into byte to pass it through the EAX cipher.
     key = codecs.escape_decode(q_key)[0]
-    print('End Key: ', key); print('\n\n\n')
 
     try:
         # Static
@@ -81,8 +77,7 @@ def app_decryption():
         output = plaintext.decode()
 
     except (ValueError, KeyError) as err: 
-        output = 'Incorrect decryption'
-        print('Error: {}'.format(err))
+        output = err
 
     return jsonify({
         'message': 'Decrypt Data', 
