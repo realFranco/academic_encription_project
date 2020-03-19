@@ -47,7 +47,7 @@ def encrypt():
 
     result['q_key'] = q_key
 
-    return jsonify({'result': result}), 201
+    return jsonify({'result': result}), 200
     
 
 @encryption.route('/decryption', methods=['POST'])
