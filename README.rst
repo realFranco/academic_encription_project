@@ -16,10 +16,10 @@ explica que tipos de encriptación utilizo y todo lo relacionado a la aplicació
 
 
 ================================
-Instruccuiones para Ejecutar el Servidor
+Instrucciones para Ejecutar el Servidor
 ================================
 
-0. Clone the repo. 
+0. Clonar el Repositorio. 
 
     $ git clone git@github.com:realFranco/academic_encription_project.git
     # o
