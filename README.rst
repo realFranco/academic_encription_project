@@ -4,19 +4,20 @@ Tiny Encription Project - FaCyT
 
 .. image:: https://img.shields.io/badge/python-3.6%2B-blue.svg?style=for-the-badge&logo=appveyor
    :alt: Supported Python Versions
+   
+.. image:: https://img.shields.io/badge/Algrotihim-EAX-green?style=for-the-badge&logo=appveyor
+   :alt: Supported Python Versions
 
 
 =======================
-Requsitos 
+Descripción 
 =======================
 
-Tomando como referencia el material de Cartografía, diseñe una aplicación capaz de encriptar y desencriptar 
-un texto escogido por usted, adicional a la aplicación deberá entregar un informe tipo paper (IEEE) en donde 
-explica que tipos de encriptación utilizo y todo lo relacionado a la aplicación.
+Aplicación capaz de encriptar y desencriptar un texto escogido por el usuario. Se usa un método de encriptado EAX.
 
 
 ================================
-Instrucciones para Ejecutar el Servidor
+Instrucciones.
 ================================
 
 0. Clonar el Repositorio. 
@@ -25,7 +26,7 @@ Instrucciones para Ejecutar el Servidor
     # o
     $ git clone https://github.com/realFranco/academic_encription_project.git
 
-1. Instalar dependencias
+1. Instalar las dependencias.
 
     $ pip3 install -r requirements.txt
 
