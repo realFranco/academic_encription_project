@@ -22,8 +22,6 @@ Instrucciones.
 
 0. Clonar el Repositorio. 
 
-    $ git clone git@github.com:realFranco/academic_encription_project.git
-    # o
     $ git clone https://github.com/realFranco/academic_encription_project.git
 
 1. Instalar las dependencias.
