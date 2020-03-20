@@ -5,7 +5,7 @@ Tiny Encription Project - FaCyT
 .. image:: https://img.shields.io/badge/python-3.6%2B-blue.svg?style=for-the-badge&logo=appveyor
    :alt: Supported Python Versions
    
-.. image:: https://img.shields.io/badge/Algrotihim-EAX-green?style=for-the-badge&logo=appveyor
+.. image:: https://img.shields.io/badge/Algrorithim-EAX-green?style=for-the-badge&logo=appveyor
    :alt: Supported Python Versions
 
 
